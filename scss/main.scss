@@ -1,0 +1,323 @@
+@import "vars";
+@import "fonts";
+@import "libs";
+
+@import "_mixins/adaptive-font";
+
+// @include adaptive-font(24, 12)
+
+*,
+*:before,
+*:after {
+	-moz-box-sizing: border-box;
+	-webkit-box-sizing: border-box;
+	box-sizing: border-box;
+}
+
+::placeholder {
+	color: #666;
+}
+
+::selection {
+	background-color: $accent;
+	color: $white;
+}
+
+body {
+	font-size: 16px;
+	font-weight: 500;
+	min-width: 320px;
+	position: relative;
+	line-height: 1.2;
+	font-family: $default-font;
+	overflow-x: hidden;
+	color: $text;
+	padding: 0;
+	margin: 0;
+
+	input, textarea {
+		border: #666 1px solid;
+		outline: none;
+
+		&:focus:required:invalid {
+			border-color: #FF5F00;
+		}
+
+		// &:focus {
+		// 	box-shadow: 0px 0px 10px 0px rgba(0, 0, 0, 0.10);
+		// }
+	}
+
+	&.lock {
+		overflow: hidden;
+	}
+}
+
+img {
+	height: auto;
+	width: 100%;
+}
+
+b, strong {
+	font-weight: bold;
+}
+
+a {
+	text-decoration: none;
+	cursor: pointer;
+	display: block;
+
+	&:hover {
+		text-decoration: none;
+	}
+}
+
+p, ul, li {
+	padding: 0;
+	margin: 0;
+}
+
+li {
+	list-style-type: none;
+}
+
+h1, h2, h3, h4, h5, h6 {
+	padding: 0;
+	margin: 0;
+	font-weight: normal;
+}
+
+button {
+	background: transparent;
+	border: none;
+	cursor: pointer;
+	padding: 0;
+	margin: 0;
+	outline: none;
+}
+
+.container {
+	max-width: 1210px;
+	margin: 0 auto;
+	padding: 0 20px;
+	width: 100%;
+}
+
+.button {
+	border-radius: 5px;
+	font-weight: 700;
+	text-align: center;
+	padding: 10px 25px;
+	font-size: 16px;
+	font-family: $default-font;
+	cursor: pointer;
+}
+
+.plashka {
+	background-image: url('../img/main-plashka.jpeg');
+	background-position: 100% 100%;
+	background-repeat: no-repeat;
+	background-size: cover;
+	min-height: 100vh;
+	padding-top: 32px;
+	padding-bottom: 100px;
+
+	.header {
+		padding: 32px 0 33px;
+
+		&__columns {
+			display: flex;
+			align-items: flex-start;
+		}
+	}
+
+	.logo {
+		margin-right: 200px;
+	}
+
+	.connection {
+		display: flex;
+		flex-direction: column;
+
+		&__text {
+			font-size: 20px;
+			color: $text;
+		}
+
+		&__items {
+			margin-top: 6px;
+			display: flex;
+			align-items: center;
+		}
+
+		&__item {
+			&:not(:last-child) {
+				margin-right: 28px;
+			}
+		}
+
+		&__link {
+			color: $accent;
+			display: flex;
+			align-items: center;
+			gap: 9px;
+			font-weight: 600;
+		}
+	
+		&__icon {
+			display: flex;
+			align-items: center;
+		}
+	}
+
+	.main-info {
+		margin-top: 33px;
+
+		&__title {
+			font-size: 42px;
+			color: $text;
+		}
+
+		&__services {
+			margin-top: 43px;
+		}
+	}
+
+	.services {
+		&__row {
+			background-color: rgba(255, 255, 255, 0.6);
+			padding: 41px 85px 53px 95px;
+		}
+
+		&__title {
+			font-size: 36px;
+			color: $text;
+		}
+
+		&__list {
+			margin-top: 36px;
+		}
+	}
+}
+
+.uni-list {
+	display: flex;
+	flex-wrap: wrap;
+	justify-content: space-between;
+	gap: 20px;
+
+	&__item {
+		display: flex;
+		align-items: flex-start;
+		width: 48%;
+	}
+
+	&__image {
+		margin-right: 20px;
+		font-size: 0;
+
+		img {
+			width: 30px;
+			height: 30px;
+		}
+	}
+
+	&__text {
+		font-size: 18px;
+		line-height: 120%;
+		color: #091520;
+	}
+}
+
+
+
+
+/************* Media *****************************/
+
+
+@media (max-width: 1100px) {
+	.plashka .logo {
+    margin-right: 90px;
+	}
+}
+
+
+@media (max-width: 900px) {
+	.plashka  {
+		background-image: url(../img/main-plashka-mobile.jpeg);
+		padding-top: 20px;
+		padding-bottom: 212px;
+
+		.header {
+			padding: 20px 0 19px 0;
+			&__columns {
+				flex-direction: column;
+			}
+
+			&__connection {
+				margin-top: 50px;
+			}
+		}
+
+		.logo {
+			margin-right: 0;
+		}
+		
+		.connection {
+			&__items {
+				flex-direction: column;
+				align-items: flex-start;
+				margin-top: 17px;
+			}
+			&__item {
+				&:not(:first-child) {
+					margin-top: 11px;
+				}
+
+				&:not(:last-child) {
+					margin-right: 0px;
+				}
+			}
+		}
+
+		.main-info {
+			margin-top: 19px;
+
+			&__services {
+				margin-top: 45px;
+			}
+		}
+
+		.services {
+			&__title {
+				font-size: 24px;
+			}
+
+			&__row {
+				padding: 41px 20px 44px;
+				margin-right: -20px;
+				margin-left: -20px;
+			}
+		}
+	}
+
+	.uni-list {
+		flex-wrap: nowrap;
+		flex-direction: column;
+		gap: 15px;
+		
+		&__item {
+			width: 100%;
+			margin-right: 0;
+		}
+
+		&__text {
+			font-size: 16px;
+		}
+	}
+}
+
+
+@media (max-width: 350px) {
+
+}
